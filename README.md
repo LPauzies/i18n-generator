@@ -1,1 +1,1 @@
-# i18n-generator
+# i18n generator

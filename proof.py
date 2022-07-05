@@ -1,5 +1,5 @@
-import translators as ts
-LIMIT = 4999 # By batch
+from i18ngenerator.translator import Translator
+from i18ngenerator.languages import Language
 
 # Doc : https://github.com/UlionTse/translators
 
@@ -16,5 +16,5 @@ LIMIT = 4999 # By batch
 #     print(res)
 #     start+=LIMIT
 
-# For all language use ts.google
-print(ts.google("Hello", from_language="en", to_language="fr"))
+print(Translator.translate(text="Hello, I am Lucas", from_language=Language.ENGLISH, to_language=Language.FRENCH))
+# print(Translator.batch_translate(text_list=["Bonjour, je suis Lucas", " Accueil", "Salutations"], from_language="fr", to_language="en"))
