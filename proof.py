@@ -1,4 +1,5 @@
 from i18ngenerator.translator import Translator
+from i18ngenerator.transformer import Transformer
 from i18ngenerator.languages import Language
 
 # Doc : https://github.com/UlionTse/translators
@@ -15,6 +16,7 @@ from i18ngenerator.languages import Language
 #     res = translators.google(l, from_language="fr", to_language="en")
 #     print(res)
 #     start+=LIMIT
-
-print(Translator.translate(text="Hello, I am Lucas", from_language=Language.ENGLISH, to_language=Language.FRENCH))
+a = "bonjour ! je m'appelle Lucas. et Toi ?"
+transformer = Transformer()
+print(transformer.capitalize(a))
 # print(Translator.batch_translate(text_list=["Bonjour, je suis Lucas", " Accueil", "Salutations"], from_language="fr", to_language="en"))
