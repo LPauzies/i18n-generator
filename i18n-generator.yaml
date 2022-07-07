@@ -1,0 +1,7 @@
+main-file: locales/fr.json
+from-language: fr
+to-language:
+  - en
+  - zh
+  - ru
+  - pt

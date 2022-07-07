@@ -4,7 +4,8 @@ from setuptools import setup, find_packages
 requirements = [
     "translators==5.3.1",
     "unidecode==1.3.4",
-    "nltk"
+    "nltk",
+    "pyyaml==6.0"
 ]
 
 # Read from Readme.md for long description

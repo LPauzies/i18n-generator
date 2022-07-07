@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import List
 
 from i18ngenerator.utils.exceptions import WrongLocaleException
 
