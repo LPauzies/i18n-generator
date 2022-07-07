@@ -9,7 +9,7 @@ requirements = [
 
 # Read from Readme.md for long description
 with open("./README.md", "r", encoding="utf-8") as f:
-    readme = f.read() 
+    readme = f.read()
 
 # Setup the package
 setup(
@@ -27,7 +27,7 @@ setup(
         exclude=["tests"]
     ),
     install_requires = requirements,
-    setup_requires = ["pytest-runner", "flake8", "wheel"],
+    setup_requires = ["pytest-runner", "flake8", "wheel", "twine"],
     tests_require = ["pytest"],
     classifiers = [
         "Programming Language :: Python :: 3",
