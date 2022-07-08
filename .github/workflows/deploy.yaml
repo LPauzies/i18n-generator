@@ -1,0 +1,74 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python version to ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/requirements/build_requirements.txt
+      
+      - name: Make the build
+        run: |
+          python -m build
+
+      - name: Upload package as archive
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: build-package
+          path: dist
+
+  deploy:
+    name: Deploy package to PyPi
+    needs: [build]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python version to ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Download package
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: build-package
+          path: dist
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/requirements/upload_requirements.txt
+
+      - name: Publish package 🚀
+        uses: pypa/gh-action-pypi-publish@v1.5.0
+        with:
+          user: ${{ secrets.PYPI_USERNAME }}
+          password: ${{ secrets.PYPI_TOKEN }}
+          verbose: true
+          package_dir: dist/

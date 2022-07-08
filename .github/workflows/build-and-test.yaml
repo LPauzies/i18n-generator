@@ -1,0 +1,65 @@
+name: build-and-test
+
+on: 
+  push, pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python version to ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/requirements/build_requirements.txt
+      
+      - name: Make the build
+        run: |
+          python -m build
+
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python version to ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/requirements/test_requirements.txt
+
+      - name: Lint
+        run: |
+          python -m flake8 i18ngenerator/ --count --show-source --statistics
+      
+      - name: Unit tests
+        run: |
+          python -m pytest tests
+
+      - name: e2e tests
+        run: |
+          python -m pytest tests_e2e
