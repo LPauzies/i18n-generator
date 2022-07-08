@@ -20,7 +20,7 @@ setup(
     author_email = "lucas.pauzies@hotmail.fr",
     maintainer = "Lucas Pauzies",
     maintainer_email = "lucas.pauzies@hotmail.fr",
-    description = "Python package for i18n implementation and conversion",
+    description = "Python package for i18n implementation and locales generation",
     long_description = readme,
     long_description_content_type = "text/markdown",
     url = "https://github.com/LPauzies/i18n-generator",
