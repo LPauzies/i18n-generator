@@ -12,4 +12,4 @@ class TestLanguage(unittest.TestCase):
         expected_language = Language.FRENCH
 
         # Do
-        self.assertEquals(expected_language, Language.from_locale(locale))
+        self.assertEqual(expected_language, Language.from_locale(locale))
