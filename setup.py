@@ -44,8 +44,5 @@ setup(
         "Topic :: Software Development :: Internationalization",
         "Topic :: Software Development :: Libraries"
     ],
-    entry_points = {
-        "i18n": ["i18n=i18ngenerator.main:main"]
-    },
     python_requires = ">=3.8"
 )
