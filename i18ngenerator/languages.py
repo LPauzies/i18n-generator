@@ -5,6 +5,7 @@ from i18ngenerator.utils.exceptions import WrongLocaleException
 # Define the type
 Language = "Language"
 
+
 class Language(Enum):
     ENGLISH = "en"
     CHINESE = "zh"

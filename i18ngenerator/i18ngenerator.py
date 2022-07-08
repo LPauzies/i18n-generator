@@ -30,13 +30,15 @@ class I18nGenerator:
         # For each language make the translation recursively
         for language in to_language:
             translated_dictionnary = self.generate_translation_from_dict(data, from_language, language)
-            if verbose: print(f"Sucessfully translated from {Language.to_locale(from_language)} to {Language.to_locale(language)}")
+            if verbose: 
+                print(f"Sucessfully translated from {Language.to_locale(from_language)} to {Language.to_locale(language)}")
             # Build path file using locale
             file_path = pathlib.Path(folder_to_generate_translation_files, f"{Language.to_locale(language)}.json")
             # Dump the dict to json file
             with open(file_path, "w", encoding="utf-8") as f:
                 json.dump(translated_dictionnary, f, indent=4, ensure_ascii=False)
-                if verbose: print(f"Sucessfully written translated file to {file_path}")
+                if verbose: 
+                    print(f"Sucessfully written translated file to {file_path}")
 
     def generate_translation_from_dict(self, json_data: Dict[str, Any], from_language: Language, to_language: Language) -> Dict[str, Any]:
         """Generate translation wrapping the main recursive function `I18nGenerator._generate_translation_rec`.
@@ -55,9 +57,7 @@ class I18nGenerator:
 
     def _generate_translation_rec(self, result: Dict[str, any], json_data: Dict[str, Any], from_language: Language, to_language: Language):
         """Recursively translate each string in dictionnary values.
-
         Keys will not be changed.
-        
         Nested dictionnary is managed.
 
         Args:

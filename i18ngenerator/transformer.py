@@ -1,6 +1,7 @@
 import unidecode
 import nltk
 
+
 class Transformer:
 
     def __init__(self) -> None:
