@@ -48,6 +48,7 @@ def argument_parser() -> ArgumentParser:
     )
     return parser
 
+
 def main(args: Optional[List[str]] = None, verbose: bool = True) -> None:
     """Main function to be used from CLI directly.
 

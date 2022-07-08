@@ -101,8 +101,8 @@ class ConfigurationParser:
         if not(main_file.exists() and main_file.is_file()):
             raise FileNotFoundException(main_file)
         
-        # Parse to-language CLI argument
-        to_language_ = to_language.split(",") # Should be "fr,en,zh"
+        # Parse to-language CLI argument with format : "fr,en,zh"
+        to_language_ = to_language.split(",") 
 
         # Convert to languages
         from_language_ = Language.from_locale(from_language)

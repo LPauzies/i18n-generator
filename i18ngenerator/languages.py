@@ -72,7 +72,8 @@ class Language(Enum):
 
     def from_locale(locale: str) -> Language:
         for language in list(Language):
-            if locale == Language.to_locale(language): return language
+            if locale == Language.to_locale(language): 
+                return language
         raise WrongLocaleException(wrong_locale=locale)
 
     def to_locale(language: Language) -> str:
