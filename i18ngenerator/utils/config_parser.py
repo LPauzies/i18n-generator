@@ -6,6 +6,7 @@ from yaml import load, Loader
 from i18ngenerator.utils.exceptions import WrongParameterTypeException, WrongExtensionException, FileNotFoundException
 from i18ngenerator.languages import Language
 
+
 class ConfigurationModel:
     """YAML model configuration for i18n generator"""
     MAIN_FILE = "main-file"
@@ -26,12 +27,14 @@ class ConfigurationModel:
         s.append("=================")
         return "\n".join(s)
 
+
 @dataclass
 class Configuration:
     """DAO for i18n generator configuration"""
     main: pathlib.Path
     from_language: Language
     to_language: List[Language]
+
 
 class ConfigurationParser:
     """Configuration parser for i18n generator. Can manage CLI or YAML file."""
@@ -76,9 +79,9 @@ class ConfigurationParser:
 
             # Re-use code =)
             return ConfigurationParser.parse_from_cli(
-                main_file = main_file_,
-                from_language = from_language_,
-                to_language = to_language_
+                main_file=main_file_,
+                from_language=from_language_,
+                to_language=to_language_
             )
 
     def parse_from_cli(main_file: pathlib.Path, from_language: str, to_language: str) -> Configuration:
@@ -91,25 +94,24 @@ class ConfigurationParser:
 
         Raises:
             FileNotFoundException: If main file path does not exist
-
         Returns:
             Configuration: The DAO representing Configuration
         """
-        
+        # Check for file existence
         if not(main_file.exists() and main_file.is_file()):
             raise FileNotFoundException(main_file)
         
-        # Parse to-language CLI argument
-        to_language_ = to_language.split(",") # Should be "fr,en,zh"
+        # Parse to-language CLI argument with format : "fr,en,zh"
+        to_language_ = to_language.split(",") 
 
         # Convert to languages
         from_language_ = Language.from_locale(from_language)
         to_language_ = list(map(lambda lang: Language.from_locale(lang), to_language_))
 
         return Configuration(
-            main = main_file,
-            from_language = from_language_,
-            to_language = to_language_
+            main=main_file,
+            from_language=from_language_,
+            to_language=to_language_
         )
 
     def _check_configuration_type(configuration_dict: Dict[str, Any], configuration_model_key: str, expected_type: type):

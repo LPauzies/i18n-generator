@@ -25,6 +25,7 @@ jobs:
       - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install .
           pip install -r .github/requirements/build_requirements.txt
       
       - name: Make the build
@@ -60,9 +61,10 @@ jobs:
           name: build-package
           path: dist
 
-      - name: Install build dependencies
+      - name: Install deploy dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install .
           pip install -r .github/requirements/upload_requirements.txt
 
       - name: Publish package 🚀

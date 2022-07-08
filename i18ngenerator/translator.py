@@ -1,6 +1,6 @@
-from typing import Dict, List
 from i18ngenerator.languages import Language
 import translators
+
 
 class Translator:
 
@@ -20,6 +20,11 @@ class Translator:
         """
         if not isinstance(from_language, Language):
             raise TypeError(f"Cannot use type {type(from_language)} for function. Use {Language} instead.")
-        if not isinstance(to_language, Language): 
+        if not isinstance(to_language, Language):
             raise TypeError(f"Cannot use type {type(to_language)} for function. Use {Language} instead.")
-        return translators.google(query_text=text.strip(), from_language=Language.to_locale(from_language), to_language=Language.to_locale(to_language), if_ignore_limit_of_length=True)
+        return translators.google(
+            query_text=text.strip(), 
+            from_language=Language.to_locale(from_language), 
+            to_language=Language.to_locale(to_language), 
+            if_ignore_limit_of_length=True
+        )

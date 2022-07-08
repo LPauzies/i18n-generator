@@ -1,11 +1,11 @@
 import pathlib
-from tabnanny import verbose
 from typing import List, Optional
 from i18ngenerator.i18ngenerator import I18nGenerator
 from i18ngenerator.utils.config_parser import ConfigurationModel
 from argparse import RawTextHelpFormatter, ArgumentParser
 from i18ngenerator.utils.exceptions import MissingParameterException
 from i18ngenerator.utils.config_parser import ConfigurationParser
+
 
 def argument_parser() -> ArgumentParser:
     """Declare argument parser for i18ngenerator
@@ -14,9 +14,9 @@ def argument_parser() -> ArgumentParser:
         ArgumentParser: The argument parser for i18ngenerator
     """
     parser = ArgumentParser(
-        prog = "i18n generator",
-        description = "i18n implementation to help generate automatically translated files based on main language",
-        formatter_class = RawTextHelpFormatter
+        prog="i18n generator",
+        description="i18n implementation to help generate automatically translated files based on main language",
+        formatter_class=RawTextHelpFormatter
     )
     parser.add_argument(
         "--config",
@@ -48,6 +48,7 @@ def argument_parser() -> ArgumentParser:
     )
     return parser
 
+
 def main(args: Optional[List[str]] = None, verbose: bool = True) -> None:
     """Main function to be used from CLI directly.
 
@@ -72,9 +73,7 @@ def main(args: Optional[List[str]] = None, verbose: bool = True) -> None:
     i18n_generator = I18nGenerator()
     i18n_generator.generate_translation_from_json(configuration.main, configuration.from_language, configuration.to_language, verbose)
 
+
 # Entry point when package is use as CLI
 if __name__ == "__main__":
     main()
-
-    
-    

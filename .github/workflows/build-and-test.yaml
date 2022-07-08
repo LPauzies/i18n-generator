@@ -29,6 +29,7 @@ jobs:
       - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install .
           pip install -r .github/requirements/build_requirements.txt
       
       - name: Make the build
@@ -55,6 +56,7 @@ jobs:
       - name: Install test dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install .
           pip install -r .github/requirements/test_requirements.txt
 
       - name: Lint
