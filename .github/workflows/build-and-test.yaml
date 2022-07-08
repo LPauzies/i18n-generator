@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: Build package
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,7 +36,8 @@ jobs:
           python -m build
 
   test:
-
+    name: Run several tests
+    needs: [build]
     runs-on: ubuntu-latest
     strategy:
       matrix:

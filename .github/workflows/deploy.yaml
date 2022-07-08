@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-
+    name: Build package
     runs-on: ubuntu-latest
     strategy:
       matrix:
