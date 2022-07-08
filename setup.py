@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 requirements = [
     "translators==5.3.1",
     "unidecode==1.3.4",
-    "nltk",
+    "nltk>=3.7",
     "pyyaml==6.0"
 ]
 
@@ -35,5 +35,8 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
+    entry_points = {
+        "i18n": ["i18n=i18ngenerator.main:main"]
+    },
     python_requires = ">=3.8"
 )

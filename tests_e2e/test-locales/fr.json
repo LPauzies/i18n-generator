@@ -1,0 +1,10 @@
+{
+    "key1": "Bonjour, je m'appelle Lucas et toi ? Tu vis dans une forêt ?",
+    "key2": {
+        "key3": "Faire ceci et cela.",
+        "key4": "Joey va te faire foutre.",
+        "key5": {
+            "key6": "Chloé et Lucas sont des teubés."
+        }
+    }
+}
