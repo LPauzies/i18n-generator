@@ -31,9 +31,18 @@ setup(
     setup_requires = ["pytest-runner", "flake8", "wheel", "twine"],
     tests_require = ["pytest"],
     classifiers = [
-        "Programming Language :: Python :: 3",
+        "Development Status :: 4 - Beta",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
+        "Topic :: Software Development :: Internationalization",
+        "Topic :: Software Development :: Libraries"
     ],
     entry_points = {
         "i18n": ["i18n=i18ngenerator.main:main"]
