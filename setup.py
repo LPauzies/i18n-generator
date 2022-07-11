@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 # The requirements to build the package
 requirements = [
     "translators==5.3.1",
-    "unidecode==1.3.4",
     "nltk>=3.7",
     "pyyaml==6.0"
 ]

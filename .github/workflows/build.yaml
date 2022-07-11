@@ -1,0 +1,37 @@
+name: Build & Tests
+
+on: 
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up Python version to ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install .
+          pip install -r .github/requirements/build_requirements.txt
+      
+      - name: Make the build
+        run: |
+          python -m build
