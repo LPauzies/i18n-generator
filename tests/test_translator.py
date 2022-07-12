@@ -112,3 +112,24 @@ class TestTranslator(unittest.TestCase):
         self.assertEqual(s_en, Translator.translate_text(s_ko, from_language=Language.KOREAN, to_language=Language.ENGLISH))
         self.assertEqual(s_es, Translator.translate_text(s_ko, from_language=Language.KOREAN, to_language=Language.SPANISH))
         self.assertEqual(s_ru, Translator.translate_text(s_ko, from_language=Language.KOREAN, to_language=Language.RUSSIAN))
+
+    def test_translate_text_not_instance_of_language_from(self):
+        # Given
+        s_fr = "Il semble y avoir Noah et Irene sur la plage. Ils ont traversé la forêt. C'était hier."
+
+        with self.assertRaises(TypeError):
+            Translator.translate_text(s_fr, from_language="fr", to_language=Language.SPANISH)
+
+    def test_translate_text_not_instance_of_language_to(self):
+        # Given
+        s_fr = "Il semble y avoir Noah et Irene sur la plage. Ils ont traversé la forêt. C'était hier."
+
+        with self.assertRaises(TypeError):
+            Translator.translate_text(s_fr, from_language=Language.FRENCH, to_language="es")
+
+    def test_translate_text_not_instance_of_language_from_to(self):
+        # Given
+        s_fr = "Il semble y avoir Noah et Irene sur la plage. Ils ont traversé la forêt. C'était hier."
+
+        with self.assertRaises(TypeError):
+            Translator.translate_text(s_fr, from_language="fr", to_language="es")
