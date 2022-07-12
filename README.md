@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.ibb.co/7SPGcY3/logo.png" alt="i18n-generator-logo" border="0" width="120">
+    <img src=".assets/logo.png" alt="i18n-generator-logo" border="0" width="120">
 </p>
 
 # i18n Generator, a powerful library to easily internationalize projects
@@ -30,12 +30,12 @@ i18n-generator generates the translation from a native language to a list of oth
 ### Command line
 #### Help
 ```Bash
-python -m i18generator -h
+python -m i18ngenerator -h
 ```
 
 #### Using configuration file
 ```Bash
-python -m i18generator --config config.yaml
+python -m i18ngenerator --config config.yaml
 ```
 With `config.yaml` :
 ```YAML
@@ -52,7 +52,7 @@ You can find the list of i18n locales [here](https://www.science.co.il/language/
 #### Using CLI arguments
 ```Bash
 # Example of use with CLI arguments
-python -m i18generator --main-file main.json --from-language fr --to-language es,zh,en
+python -m i18ngenerator --main-file main.json --from-language fr --to-language es,zh,en
 ```
 With `main.json` as main json file containing values to translate from french (fr) to spanish, chinese and english (es,zh,en)
 
