@@ -70,8 +70,7 @@ class I18nGenerator:
             # If instance of string, we should translate it
             if isinstance(json_data[key], str):
                 s = json_data[key]
-                s = self.transformer.strip_accents(s)
-                s = self.transformer.capitalize(s)
+                s = self.transformer.capitalize(s, from_language)
                 s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                 result[key] = s
             # If instance of dict, it means it is nested, we make a recursive call by reference

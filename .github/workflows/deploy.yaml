@@ -1,4 +1,4 @@
-name: Deploy package
+name: Deploy Package to PyPI
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
           path: dist
 
   deploy:
-    name: Deploy package to PyPi
+    name: Deploy Package to PyPI
     needs: [build]
     runs-on: ubuntu-latest
     strategy:
