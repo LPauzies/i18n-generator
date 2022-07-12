@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Tests
 
 on: 
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    name: Unit Tests
+    name: Tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -31,7 +31,22 @@ jobs:
           python -m pip install --upgrade pip
           pip install .
           pip install -r .github/requirements/test_requirements.txt
-      
-      - name: Unit tests
+
+      - name: Lint
         run: |
-          python -m pytest tests
+          python -m flake8 i18ngenerator/ --count --show-source --statistics
+      
+      - name: Unit tests & e2e tests
+        run: |
+          python -m coverage run -m pytest tests tests_e2e
+
+      - name: Transform .coverage to lcov format file
+        run: |
+          coverage-lcov
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: lcov.info
+          
