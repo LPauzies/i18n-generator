@@ -14,7 +14,7 @@ with open("./README.md", "r", encoding="utf-8") as f:
 # Setup the package
 setup(
     name = "i18n-generator",
-    version = "0.1.0",
+    version = "1.0.0",
     author = "Lucas Pauzies",
     author_email = "lucas.pauzies@hotmail.fr",
     maintainer = "Lucas Pauzies",
@@ -23,11 +23,20 @@ setup(
     long_description = readme,
     long_description_content_type = "text/markdown",
     url = "https://github.com/LPauzies/i18n-generator",
+    download_url = "https://pypi.org/project/i18n-generator/",
+    project_urls = {
+        'Documentation': 'https://github.com/LPauzies/i18n-generator/blob/master/README.md',
+        'License': 'https://github.com/LPauzies/i18n-generator/blob/master/LICENSE',
+        'CI': 'https://github.com/LPauzies/i18n-generator/actions',
+        'Bug Tracker': 'https://github.com/LPauzies/i18n-generator/issues',
+        'Source Code': "https://github.com/LPauzies/i18n-generator",
+        'Funding': 'https://www.paypal.com/donate/?hosted_button_id=RDDVL7Y5T8MJJ'
+    },
     packages = find_packages(
-        exclude=["tests"]
+        exclude=["tests", "tests_e2e"]
     ),
     install_requires = requirements,
-    setup_requires = ["pytest-runner", "flake8", "wheel", "twine"],
+    setup_requires = ["pytest-runner", "flake8", "wheel", "twine", "coverage", "coverage-lcov"],
     tests_require = ["pytest"],
     classifiers = [
         "Development Status :: 4 - Beta",
@@ -36,8 +45,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.12",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
         "Topic :: Software Development :: Internationalization",
