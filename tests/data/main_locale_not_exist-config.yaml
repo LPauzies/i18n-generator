@@ -1,4 +1,4 @@
-main-file: locales/fr.json
+main-file: dummy/path/locale.json
 from-language: fr
 to-language:
   - en

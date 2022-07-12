@@ -1,0 +1,7 @@
+main-file: tests/data/fr.json
+from-language: fr
+to-language:
+  - en
+  - zh
+  - ru
+  - pt

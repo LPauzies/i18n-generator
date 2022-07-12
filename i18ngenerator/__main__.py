@@ -18,28 +18,30 @@ def argument_parser() -> ArgumentParser:
         description="i18n implementation to help generate automatically translated files based on main language",
         formatter_class=RawTextHelpFormatter
     )
-    parser.add_argument(
+    with_config_file = parser.add_argument_group("Using configuration file as YAML only (default behaviour)")
+    with_config_file.add_argument(
         "--config",
         dest="config_file",
         action="store",
         help=f"Target the YAML configuration file. {ConfigurationModel.format_help()}",
         type=pathlib.Path
     )
-    parser.add_argument(
+    with_cli = parser.add_argument_group("Using CLI arguments")
+    with_cli.add_argument(
         "--main-file",
         dest="main_file",
         action="store",
         help="Main file that will be use as base for translation. Example: locales/fr.json. Considered only if argument '--config' is not used.",
         type=pathlib.Path
     )
-    parser.add_argument(
+    with_cli.add_argument(
         "--from-language",
         dest="from_language",
         action="store",
         help="Language of the main file. Example: en. Considered only if argument '--config' is not used.",
         type=str
     )
-    parser.add_argument(
+    with_cli.add_argument(
         "--to-language",
         dest="to_language",
         action="store",
