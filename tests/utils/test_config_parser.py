@@ -74,13 +74,14 @@ class TestConfigurationParser(unittest.TestCase):
             (ConfigurationModel.FROM, str),
             (ConfigurationModel.TO, list)
         ]
+        expected_configuration_count = len(configuration_model)
 
         # Do
+        configuration_count_checked = 0
         for key_conf_model in configuration_model:
-            try:
-                ConfigurationParser._check_configuration_type(configuration_dict, key_conf_model[0], key_conf_model[1])
-            except Exception as e:
-                self.fail(e)
+            ConfigurationParser._check_configuration_type(configuration_dict, key_conf_model[0], key_conf_model[1])
+            configuration_count_checked += 1
+        self.assertEqual(expected_configuration_count, configuration_count_checked)
 
     def test_check_configuration_type_without_good_keys(self):
         # Given
