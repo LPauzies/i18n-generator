@@ -1,5 +1,5 @@
 <p align="center">
-    <img src=".assets/logo.png" alt="i18n-generator-logo" border="0" width="120">
+    <img src="https://i.imgur.com/aBXsGkl.png" alt="i18n-generator-logo" border="0" width="120">
 </p>
 
 # i18n Generator, a powerful library to easily internationalize projects
