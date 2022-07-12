@@ -14,7 +14,7 @@ with open("./README.md", "r", encoding="utf-8") as f:
 # Setup the package
 setup(
     name = "i18n-generator",
-    version = "1.0.1",
+    version = "1.0.0",
     author = "Lucas Pauzies",
     author_email = "lucas.pauzies@hotmail.fr",
     maintainer = "Lucas Pauzies",
