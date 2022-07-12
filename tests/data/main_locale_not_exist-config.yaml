@@ -1,0 +1,7 @@
+main-file: dummy/path/locale.json
+from-language: fr
+to-language:
+  - en
+  - zh
+  - ru
+  - pt
