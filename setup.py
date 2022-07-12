@@ -36,7 +36,7 @@ setup(
         exclude=["tests", "tests_e2e"]
     ),
     install_requires = requirements,
-    setup_requires = ["pytest-runner", "flake8", "wheel", "twine", "coverage", "coverage-lcov"],
+    setup_requires = ["pytest-runner", "flake8", "wheel", "twine"],
     tests_require = ["pytest"],
     classifiers = [
         "Development Status :: 4 - Beta",
