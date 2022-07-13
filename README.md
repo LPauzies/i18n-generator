@@ -56,6 +56,54 @@ python -m i18ngenerator --main-file main.json --from-language fr --to-language e
 ```
 With `main.json` as main json file containing values to translate from french (fr) to spanish, chinese and english (es,zh,en)
 
+### Python package
+#### From JSON file
+
+```Python
+from i18ngenerator.i18ngenerator import I18nGenerator
+from i18ngenerator.languages import Language
+import pathlib
+
+# Using json file
+json_file = pathlib.Path("path/to/main.json")
+from_language = Language.ENGLISH
+to_language = [
+    Language.FRENCH,
+    Language.CHINESE
+]
+
+i18n_generator = I18nGenerator()
+i18n_generator.generate_translation_from_json(json_file, from_language, to_language)
+```
+#### From Python dict
+```Python
+from i18ngenerator.i18ngenerator import I18nGenerator
+from i18ngenerator.languages import Language
+
+# Using dict object
+json_dict = {"dummy_key_1": "Hello", "dummy_key_2": "I am Lucas ! I am 24 years old."}
+from_language = Language.ENGLISH
+to_language = Language.FRENCH
+
+i18n_generator = I18nGenerator()
+result = i18n_generator.generate_translation_from_dict(json_dict, from_language, to_language)
+print(result)
+>>> {"dummy_key_1": "Bonjour", "dummy_key_2": "Je suis Lucas! J'ai 24 ans."}
+```
+
+#### Just for translation
+```Python
+from i18ngenerator.translator import Translator
+from i18ngenerator.languages import Language
+
+text = "Bonjour, je suis Lucas."
+from_language = Language.FRENCH
+to_language = Language.ENGLISH
+translated_text = Translator.translate_text(text, from_language, to_language)
+print(translated_text)
+>>> "Hello, I am Lucas."
+```
+
 ## Dependencies
 - [translators - Translators is a library which aims to bring free, multiple, enjoyable translation](https://pypi.org/project/translators/)
 - [nltk - The Natural Language Toolkit (NLTK) is a Python package for natural language processing](https://pypi.org/project/nltk/)
@@ -83,8 +131,9 @@ All contributions, bug reports, bug fixes, documentation improvements, enhanceme
 
 You can consider using these lines of code to see which languages are supported by i18n-generator
 ```Python
->>> from i18ngenerator.languages import Language
->>> list(Language)
+from i18ngenerator.languages import Language
+
+print(list(Language))
 >>> [<Language.ENGLISH: 'en'>, <Language.CHINESE: 'zh'>, <Language.FRENCH: 'fr'>, ...]
 ```
 
