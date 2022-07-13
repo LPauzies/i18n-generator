@@ -9,7 +9,7 @@
 [![Tests](https://github.com/LPauzies/i18n-generator/actions/workflows/tests.yaml/badge.svg)](https://github.com/LPauzies/i18n-generator/actions/workflows/tests.yaml)
 [![PyPI version](https://badge.fury.io/py/i18n-generator.svg)](https://badge.fury.io/py/i18n-generator)
 [![Coverage Status](https://coveralls.io/repos/github/LPauzies/i18n-generator/badge.svg?branch=master)](https://coveralls.io/github/LPauzies/i18n-generator?branch=master)
-[![Downloads](https://pepy.tech/badge/i18n-generator)](https://pepy.tech/project/i18n-generator)
+[![Downloads](https://static.pepy.tech/personalized-badge/i18n-generator?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/i18n-generator)
 
 ## What is it ?
 
