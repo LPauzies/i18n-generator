@@ -1,10 +1,48 @@
 {
-    "key1": "Olá, meu nome é Lucas e você? Você mora em uma floresta?",
-    "key2": {
-        "key3": "Faça isso e aquilo.",
-        "key4": "Joey vai te fazer foder.",
-        "key5": {
-            "key6": "Parece que você é precedido ... Ahahah!"
-        }
+    "k1": "Olá, meu nome é Alphonse.",
+    "k2": {
+        "k1": "Saudações de Knight Preux!",
+        "k2": {
+            "k1": "Aqui está Paris!",
+            "k2": [
+                "Realizo testes em lugares adequados.",
+                "Agradeço os testes em contextos inadequados.",
+                "Eu sou filho de um ferreiro. Meu pai se chamava Torag."
+            ]
+        },
+        "k3": [
+            [
+                "Eu sou um boneco de neve.",
+                "Eu gosto de lutar.",
+                "Eu gosto de manter o RUSK."
+            ],
+            [
+                "Ocasionalmente, vou colocar um pouco de polimento.",
+                "Quando uma mulher muda de homem, ela muda de penteado.",
+                "Você não é apenas um covarde, é um traidor, pois seu pequeno tamanho o deixa adivinhar."
+            ]
+        ],
+        "k4": [
+            {
+                "k1": "Como está o seu Blanquette?",
+                "k2": [
+                    "É a arrogância inexputível de sua beleza que me aperta.",
+                    "Podemos dizer, mas a França ainda é o país de 400 queijos.",
+                    "Isso é um pouco, Jacques disse que não há carnes frias."
+                ],
+                "k3": {
+                    "k1": "Eu gosto quando você é alimentado com óleo ...",
+                    "k2": 123456789.12345679
+                }
+            },
+            [
+                "Ok, vamos fazer assim, encantado por ter visto o amigo novamente.",
+                "Nem todos os alemães são nazistas! - Sim, eu conheço essa teoria.",
+                "Ouça o meu pequeno, lá eu apenas mato um crocodilo '. Portanto, se você quiser que trabalhemos igualmente, você deve chegar lá."
+            ],
+            "Eu me uso. A menos que eu tenha que contar até 5. E lá, no entanto, isso pode me servir. Não devo exceder 5, porque não conheço 6. Estou espancado.",
+            "",
+            123456789
+        ]
     }
 }

@@ -1,10 +1,48 @@
 {
-    "key1": "Hello, My name is Lucas and you? Do you live in a forest?",
-    "key2": {
-        "key3": "Do this and that.",
-        "key4": "Joey will make you fuck.",
-        "key5": {
-            "key6": "It seems that you are preceded ... Ahahah!"
-        }
+    "k1": "Hello, My name is Alphonse.",
+    "k2": {
+        "k1": "Preux knight greetings!",
+        "k2": {
+            "k1": "Here is Paris!",
+            "k2": [
+                "I carry out tests in adequate places.",
+                "I appreciate testing in unsuitable contexts.",
+                "I am the son of a blacksmith. My father was called Torag."
+            ]
+        },
+        "k3": [
+            [
+                "I am a snowman.",
+                "I like to fight.",
+                "I like to butter the rusk."
+            ],
+            [
+                "Occasionally, I will put you a little polish.",
+                "When a woman changes her man, she changes her hairstyle.",
+                "You are not only a coward, you are a traitor, as your little size let him guess."
+            ]
+        ],
+        "k4": [
+            {
+                "k1": "How is your blanquette?",
+                "k2": [
+                    "It is the inexputable arrogance of your beauty that sprinkles me.",
+                    "We may say, but France is still the country of 400 cheeses.",
+                    "That's a little, Jacques said said no cold meats."
+                ],
+                "k3": {
+                    "k1": "I like when you are fed on oil ...",
+                    "k2": 123456789.12345679
+                }
+            },
+            [
+                "Okay, let's do it like that, delighted to have seen the friend again.",
+                "Not all Germans are Nazis! - Yes, I know this theory.",
+                "Listen to my little one, there I just kills a crocodile '. So if you want us to work equally, you should get there."
+            ],
+            "I use me. Unless I have to count up to 5. And there, however, it could serve me. I must not exceed 5, because I do not know 6. I am beaten.",
+            "",
+            123456789
+        ]
     }
 }

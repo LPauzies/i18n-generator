@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from i18ngenerator.utils.metadata import VERSION
 
 # The requirements to build the package
 requirements = [
@@ -14,7 +15,7 @@ with open("./README.md", "r", encoding="utf-8") as f:
 # Setup the package
 setup(
     name = "i18n-generator",
-    version = "1.0.2",
+    version = VERSION,
     author = "Lucas Pauzies",
     author_email = "lucas.pauzies@hotmail.fr",
     maintainer = "Lucas Pauzies",
