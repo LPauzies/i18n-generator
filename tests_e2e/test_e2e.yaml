@@ -2,6 +2,6 @@ main-file: tests_e2e/test-locales/fr.json
 from-language: fr
 to-language:
   - en
-  - zh
   - ru
   - pt
+  - ko
