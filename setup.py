@@ -5,7 +5,8 @@ from i18ngenerator.utils.metadata import VERSION
 requirements = [
     "translators==5.3.1",
     "nltk>=3.7",
-    "pyyaml==6.0"
+    "pyyaml==6.0",
+    "tqdm==4.64"
 ]
 
 # Read from Readme.md for long description

@@ -1,5 +1,6 @@
 import pathlib
 import json
+from tqdm import tqdm
 from typing import Dict, Any, List, Union
 from i18ngenerator.languages import Language
 from i18ngenerator.transformer import Transformer
@@ -52,7 +53,8 @@ class I18nGenerator:
             Dict[str, Any]: The `json_data` with string values translated to `to_language`
         """
         result = {}
-        self._generate_translation_rec(result, json_data, from_language, to_language)
+        progress_bar = tqdm(total=json_data.keys())
+        self._generate_translation_rec(result, json_data, from_language, to_language, progress_bar)
         return result
 
     def _generate_translation_rec(self, result: Union[List[Any], Dict[str, Any]], json_data: Union[List[Any], Dict[str, Any]], from_language: Language, to_language: Language):
