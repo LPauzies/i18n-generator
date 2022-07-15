@@ -6,6 +6,7 @@ from i18ngenerator.utils.config_parser import ConfigurationModel, ConfigurationP
 from i18ngenerator.utils.exceptions import MissingParameterException
 from i18ngenerator.utils.metadata import VERSION
 
+
 def argument_parser() -> ArgumentParser:
     """Declare argument parser for i18ngenerator
 
@@ -18,11 +19,11 @@ def argument_parser() -> ArgumentParser:
         formatter_class=RawTextHelpFormatter
     )
     parser.add_argument(
-            "-v",
-            "--version",
-            dest="version",
-            action="store_true",
-            help="Version of the package"
+        "-v",
+        "--version",
+        dest="version",
+        action="store_true",
+        help="Version of the package"
     )
     with_config_file = parser.add_argument_group("Using configuration file as YAML only (default behaviour)")
     with_config_file.add_argument(
