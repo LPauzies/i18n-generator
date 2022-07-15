@@ -70,6 +70,7 @@ class Translator:
             )
         # If we catch exception then just use Google translate by default
         except Exception:
+            print("Translation service unavailable, translated with Google Translate instead.")
             return translators.google(
                 query_text=text,
                 from_language=Language.to_locale(from_language),
