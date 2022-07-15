@@ -78,3 +78,48 @@ class Language(Enum):
 
     def to_locale(language: Language) -> str:
         return language.value
+
+
+# Define groups of languages
+KOREANIC_LANGUAGES = [
+    Language.KOREAN
+]
+
+CHINESE_LANGUAGES = [
+    Language.CHINESE
+]
+
+JAPONIC_LANGUAGES = [
+    Language.JAPANESE
+]
+
+LATIN_LANGUAGES = [
+    Language.FRENCH,
+    Language.SPANISH,
+    Language.PORTUGUESE,
+    Language.ROMANIAN,
+    Language.CATALAN,
+    Language.ITALIAN,
+    Language.BASQUE
+]
+
+GERMAN_LANGUAGES = [
+    Language.DUTCH,
+    Language.ENGLISH,
+    Language.SWEDISH,
+    Language.NORWEGIAN,
+    Language.GERMAN,
+    Language.DANISH,
+    Language.AFRIKAANS
+]
+
+CYRILLIC_LANGUAGES = [
+    Language.RUSSIAN,
+    Language.BELARUSIAN,
+    Language.BULGARIAN,
+    Language.SERBIAN,
+    Language.CZECH,
+    Language.UKRAINIAN,
+    Language.POLISH,
+    Language.CROATIAN
+]

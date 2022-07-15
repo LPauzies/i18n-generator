@@ -1,10 +1,48 @@
 {
-    "key1": "Olá, meu nome é Lucas e você? Você mora em uma floresta?",
-    "key2": {
-        "key3": "Faça isso e aquilo.",
-        "key4": "Joey vai te fazer foder.",
-        "key5": {
-            "key6": "Parece que você é precedido ... Ahahah!"
-        }
+    "k1": "Olá, meu nome é Alphonse.",
+    "k2": {
+        "k1": "Relação!",
+        "k2": {
+            "k1": "Aqui é Paris!",
+            "k2": [
+                "Faço testes em locais adequados.",
+                "Gosto de testar em contextos inapropriados.",
+                "Sou filho de um ferreiro. O nome do meu pai era Torag."
+            ]
+        },
+        "k3": [
+            [
+                "Eu sou um boneco de neve.",
+                "Eu gosto de lutar.",
+                "Eu gosto de manteiga meu rusk."
+            ],
+            [
+                "Às vezes, vou te dar um pouco de polimento.",
+                "Quando uma mulher muda de homem, ela muda o penteado.",
+                "Você não é apenas um covarde, você é um traidor, como sua baixa estatura sugeriu."
+            ]
+        ],
+        "k4": [
+            {
+                "k1": "Como está seu blanquette?",
+                "k2": [
+                    "É a arrogância inexpugnável de sua beleza que me polvilhe.",
+                    "Podemos dizer, mas a França ainda é o país de 400 queijos.",
+                    "É um pouco, Jacques disse sem charcutaria."
+                ],
+                "k3": {
+                    "k1": "Gosto quando estou manchado de óleo...",
+                    "k2": 123456789.12345679
+                }
+            },
+            [
+                "Ok, vamos fazer assim, feliz por ter visto você novamente amigo.",
+                "Nem todos os alemães são nazistas! Sim, conheço essa teoria.",
+                "Ouça o meu pequeninho, lá eu acabei de matar um croco. Então, se você quer que trabalhemos como iguais, você deve fazê-lo."
+            ],
+            "É inútil para mim. A menos que eu tenha que contar até 5. E lá, por outro lado, poderia me servir. Não devo exceder 5, porque não conheço 6. Estou derrotado.",
+            "",
+            123456789
+        ]
     }
 }

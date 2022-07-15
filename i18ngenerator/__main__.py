@@ -1,10 +1,10 @@
 import pathlib
-from typing import List, Optional
-from i18ngenerator.i18ngenerator import I18nGenerator
-from i18ngenerator.utils.config_parser import ConfigurationModel
+import sys
 from argparse import RawTextHelpFormatter, ArgumentParser
+from typing import List, Optional
+from i18ngenerator.utils.config_parser import ConfigurationModel, ConfigurationParser
 from i18ngenerator.utils.exceptions import MissingParameterException
-from i18ngenerator.utils.config_parser import ConfigurationParser
+from i18ngenerator.utils.metadata import VERSION
 
 
 def argument_parser() -> ArgumentParser:
@@ -17,6 +17,13 @@ def argument_parser() -> ArgumentParser:
         prog="i18n generator",
         description="i18n implementation to help generate automatically translated files based on main language",
         formatter_class=RawTextHelpFormatter
+    )
+    parser.add_argument(
+        "-v",
+        "--version",
+        dest="version",
+        action="store_true",
+        help="Version of the package"
     )
     with_config_file = parser.add_argument_group("Using configuration file as YAML only (default behaviour)")
     with_config_file.add_argument(
@@ -64,17 +71,23 @@ def main(args: Optional[List[str]] = None, verbose: bool = True) -> None:
     """
     parser = argument_parser()
     args = parser.parse_args(args)
-    # Retrieve configuration from
-    if args.config_file:
+    configuration = None
+    if args.version:
+        print(VERSION)
+        sys.exit(0)
+    # Retrieve configuration from config file
+    elif args.config_file:
         configuration = ConfigurationParser.parse_from_yaml(args.config_file)
+    # Retrieve configuration from CLI
     elif args.main_file and args.from_language and args.to_language:
         configuration = ConfigurationParser.parse_from_cli(args.main_file, args.from_language, args.to_language)
-    else:
+    if not configuration:
         raise MissingParameterException()
     # i18n generator
+    from i18ngenerator.i18ngenerator import I18nGenerator
     i18n_generator = I18nGenerator()
     i18n_generator.generate_translation_from_json(configuration.main, configuration.from_language, configuration.to_language, verbose)
-
+        
 
 # Entry point when package is use as CLI
 if __name__ == "__main__":

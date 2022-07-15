@@ -13,7 +13,16 @@
 
 ## What is it ?
 
-**i18n-generator** is a Python package that provides a fast way to internationalize your app, based on your native language.
+**i18n-generator** is a Python package that provides a fast way to internationalize your app, based on your native language. 
+Translation is done using these technologies depending of [language classification](https://en.wikipedia.org/wiki/List_of_language_families) :
+- Koreanic : [Papago](https://papago.naver.com/)
+- Chinese : [Iflytek](https://fanyi.xfyun.cn/console/trans/text)
+- Japonic : [Iciba](https://www.iciba.com/fy)
+- Latin : [Bing](https://www.bing.com/Translator)
+- German : [Bing](https://www.bing.com/Translator)
+- Cyrillic : [Yandex](https://translate.yandex.com/)
+
+For the rarest languages and by default if one service is not available : [Google Translate](https://translate.google.com/)
 
 ## Where to get it ?
 
