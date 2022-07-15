@@ -38,8 +38,8 @@ class TestE2E(unittest.TestCase):
             self.assertEqual(from_json(expected), from_json(tested))
 
     @clean_test_folder_at_the_end
-    def test_translation_fr_to_en_zh_ru_pt_from_yaml(self):
-        locales = ["en", "es", "ru", "pt"]
+    def test_translation_fr_to_en_ru_pt_from_yaml(self):
+        locales = ["en", "ru", "pt"]
         main(args=["--config", "tests_e2e/test_e2e.yaml"])
         for locale in locales:
             expected = pathlib.Path(EXPECTED_LOCALES_PATH, f"{locale}.json")
@@ -47,9 +47,9 @@ class TestE2E(unittest.TestCase):
             self.assertEqual(from_json(expected), from_json(tested))
 
     @clean_test_folder_at_the_end
-    def test_translation_fr_to_en_zh_ru_pt_from_cli(self):
-        locales = ["en", "es", "ru", "pt"]
-        main(args=["--main-file", str(MAIN_LOCALES_FILE), "--from-language", "fr", "--to-language", "en,es,ru,pt"])
+    def test_translation_fr_to_en_ru_pt_from_cli(self):
+        locales = ["en", "ru", "pt"]
+        main(args=["--main-file", str(MAIN_LOCALES_FILE), "--from-language", "fr", "--to-language", "en,ru,pt"])
         for locale in locales:
             expected = pathlib.Path(EXPECTED_LOCALES_PATH, f"{locale}.json")
             tested = pathlib.Path(TEST_LOCALES_PATH, f"{locale}.json")
