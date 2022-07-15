@@ -35,7 +35,8 @@ class TestE2E(unittest.TestCase):
         for locale in locales:
             expected = pathlib.Path(EXPECTED_LOCALES_PATH, f"{locale}.json")
             tested = pathlib.Path(TEST_LOCALES_PATH, f"{locale}.json")
-            self.assertEqual(from_json(expected), from_json(tested))
+            self.assertTrue(tested.exists())
+            self.assertEqual(from_json(expected).keys(), from_json(tested).keys())
 
     @clean_test_folder_at_the_end
     def test_translation_fr_to_en_ru_pt_ko_zh_ja_from_yaml(self):
@@ -44,7 +45,8 @@ class TestE2E(unittest.TestCase):
         for locale in locales:
             expected = pathlib.Path(EXPECTED_LOCALES_PATH, f"{locale}.json")
             tested = pathlib.Path(TEST_LOCALES_PATH, f"{locale}.json")
-            self.assertEqual(from_json(expected), from_json(tested))
+            self.assertTrue(tested.exists())
+            self.assertEqual(from_json(expected).keys(), from_json(tested).keys())
 
     @clean_test_folder_at_the_end
     def test_translation_fr_to_en_ru_pt_from_cli(self):
@@ -53,7 +55,8 @@ class TestE2E(unittest.TestCase):
         for locale in locales:
             expected = pathlib.Path(EXPECTED_LOCALES_PATH, f"{locale}.json")
             tested = pathlib.Path(TEST_LOCALES_PATH, f"{locale}.json")
-            self.assertEqual(from_json(expected), from_json(tested))
+            self.assertTrue(tested.exists())
+            self.assertEqual(from_json(expected).keys(), from_json(tested).keys())
 
     def test_version_system_exit(self):
         with self.assertRaises(SystemExit) as mocked_exception:
