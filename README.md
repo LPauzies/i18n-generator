@@ -20,7 +20,7 @@ Translation is done using these technologies depending of [language classificati
 - Japonic : [Iciba](https://www.iciba.com/fy)
 - Latin : [Bing](https://www.bing.com/Translator)
 - German : [Bing](https://www.bing.com/Translator)
-- Cyrillic : [Yandex](https://translate.yandex.com/)
+- Cyrillic : [Google Translate](https://translate.google.com/)
 
 For the rarest languages and by default if one service is not available : [Google Translate](https://translate.google.com/)
 
