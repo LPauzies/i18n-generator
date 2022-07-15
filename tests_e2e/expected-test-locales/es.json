@@ -1,0 +1,48 @@
+{
+    "k1": "Hola, mi nombre es Alphonse.",
+    "k2": {
+        "k1": "Preux Knight Saludos!",
+        "k2": {
+            "k1": "Aquí es París !",
+            "k2": [
+                "Realizo pruebas en lugares adecuados.",
+                "Aprecio las pruebas en contextos inadecuados.",
+                "Soy el hijo de un herrero. Mi padre fue llamado Torag."
+            ]
+        },
+        "k3": [
+            [
+                "Soy un muñeco de nieve.",
+                "Me gusta pelear.",
+                "Me gusta mantear el Rusk."
+            ],
+            [
+                "De vez en cuando, te pondré un poco de esmalte.",
+                "Cuando una mujer cambia a su hombre, cambia su peinado.",
+                "No solo eres un cobarde, eres un traidor, ya que tu pequeño tamaño lo deja adivinar."
+            ]
+        ],
+        "k4": [
+            {
+                "k1": "¿Cómo es tu Blanquette?",
+                "k2": [
+                    "Es la arrogancia inexputable de su belleza lo que me rocía.",
+                    "Podemos decir, pero Francia sigue siendo el país de 400 quesos.",
+                    "Eso es un poco, dijo Jacques, dijo que no hay carnes frías."
+                ],
+                "k3": {
+                    "k1": "Me gusta cuando te alimentan de aceite ...",
+                    "k2": 123456789.12345679
+                }
+            },
+            [
+                "De acuerdo, hagámoslo así, encantado de haber visto al amigo nuevamente.",
+                "¡No todos los alemanes son nazis! - Sí, conozco esta teoría.",
+                "Escucha a mi pequeño, allí solo mata a un cocodrilo '. Entonces, si desea que funcione por igual, debería llegar allí."
+            ],
+            "Me uso. A menos que tenga que contar hasta 5. y allí, sin embargo, podría servirme. No debo exceder los 5, porque no sé 6. Soy golpeado.",
+            "",
+            123456789
+        ]
+    }
+}
