@@ -22,6 +22,8 @@ class Translator:
             raise TypeError(f"Cannot use type {type(from_language)} for function. Use {Language} instead.")
         if not isinstance(to_language, Language):
             raise TypeError(f"Cannot use type {type(to_language)} for function. Use {Language} instead.")
+        if not text.strip():
+            return text
         try:
             if from_language in KOREANIC_LANGUAGES or to_language in KOREANIC_LANGUAGES:
                 return translators.papago(
