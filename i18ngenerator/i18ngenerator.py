@@ -73,6 +73,21 @@ class I18nGenerator:
                 s = self.transformer.capitalize(s, from_language)
                 s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                 result[key] = s
+            # If instance of list, it means it is collection of string or collection of dict, we make a recursive call by reference
+            # We assume it to be a list of str or list of Dict[str, Any]
+            # If it is not, then you should review the way you manage your json file
+            elif isinstance(json_data[key], list):
+                result[key] = []
+                for element in json_data[key]:
+                    if isinstance(element, str):
+                        s = self.transformer.capitalize(element, from_language)
+                        s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
+                        result[key].append(s)
+                    elif isinstance(element, dict):
+                        result[key].append({})
+                        self._generate_translation_rec(result[key][-1], element, from_language, to_language)
+                    else:
+                        result[key].append(element)
             # If instance of dict, it means it is nested, we make a recursive call by reference
             elif isinstance(json_data[key], dict):
                 result[key] = {}
