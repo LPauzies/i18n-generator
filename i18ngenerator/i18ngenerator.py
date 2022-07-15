@@ -1,6 +1,6 @@
 import pathlib
 import json
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Union
 from i18ngenerator.languages import Language
 from i18ngenerator.transformer import Transformer
 from i18ngenerator.translator import Translator
@@ -55,43 +55,97 @@ class I18nGenerator:
         self._generate_translation_rec(result, json_data, from_language, to_language)
         return result
 
-    def _generate_translation_rec(self, result: Dict[str, any], json_data: Dict[str, Any], from_language: Language, to_language: Language):
+    def _generate_translation_rec(self, result: Union[List[Any], Dict[str, Any]], json_data: Union[List[Any], Dict[str, Any]], from_language: Language, to_language: Language):
         """Recursively translate each string in dictionnary values.
         Keys will not be changed.
-        Nested dictionnary is managed.
+        Nested dictionnaries are managed.
+        Nested lists are managed.
+
+        How it works ?
+        - When recursive call is done, `result` should have the same type as `json_data`.
+        - Values inside `json_data` are copied to `result`.
+        - Each string, that are not keys of JSON dict are translated.
 
         Args:
-            result (Dict[str, any]): The result of the recursive procedure
-            json_data (Dict[str, Any]): The data as json to be translated
+            result (Union[List[Any], Dict[str, Any]]): The result of the recursive procedure, as list or dict
+            json_data (Union[List[Any], Dict[str, Any]]): The data as json to be translated, as list or dict
             from_language (Language): The language of `json_data` values
             to_language (Language): The target language to translate `json_data` values from
         """
-        for key in json_data:
-            # If instance of string, we should translate it
-            if isinstance(json_data[key], str):
-                s = json_data[key]
-                s = self.transformer.capitalize(s, from_language)
-                s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
-                result[key] = s
-            # If instance of list, it means it is collection of string or collection of dict, we make a recursive call by reference
-            # We assume it to be a list of str or list of Dict[str, Any]
-            # If it is not, then you should review the way you manage your json file
-            elif isinstance(json_data[key], list):
-                result[key] = []
-                for element in json_data[key]:
-                    if isinstance(element, str):
-                        s = self.transformer.capitalize(element, from_language)
-                        s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
-                        result[key].append(s)
-                    elif isinstance(element, dict):
-                        result[key].append({})
-                        self._generate_translation_rec(result[key][-1], element, from_language, to_language)
-                    else:
-                        result[key].append(element)
-            # If instance of dict, it means it is nested, we make a recursive call by reference
-            elif isinstance(json_data[key], dict):
-                result[key] = {}
-                self._generate_translation_rec(result[key], json_data[key], from_language, to_language)
-            # Else we do not distort the value
-            else:
-                result[key] = json_data[key]
+        # If two instances of dict, it means we are in classic JSON Dict or Nested Dict
+        if isinstance(result, dict) and isinstance(json_data, dict):
+            for key in json_data:
+                # If instance of string, we should translate it
+                if isinstance(json_data[key], str):
+                    s = json_data[key]
+                    s = self.transformer.capitalize(s, from_language)
+                    s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
+                    result[key] = s
+                # If instance of list, it means it can be List[str], List[List[Any]], List[Dict[str, Any]] or List[Any]
+                elif isinstance(json_data[key], list):
+                    result[key] = []
+                    for element in json_data[key]:
+                        if isinstance(element, str):
+                            s = self.transformer.capitalize(element, from_language)
+                            s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
+                            result[key].append(s)
+                        elif isinstance(element, list):
+                            # Append new empty list and fill it recursively
+                            result[key].append([])
+                            # Translate it by reference in the new empty list created
+                            self._generate_translation_rec(result[key][-1], element, from_language, to_language)
+                        elif isinstance(element, dict):
+                            # Append new empty dict and fill it recursively
+                            result[key].append({})
+                            # Translate it by reference in the new empty dict created
+                            self._generate_translation_rec(result[key][-1], element, from_language, to_language)
+                        else:
+                            # If another instance like int, float and so on, do not disturb the value
+                            result[key].append(element)
+                # If instance of dict, it means it is nested, we make a recursive call by reference
+                elif isinstance(json_data[key], dict):
+                    # Add new empty dict to known key and fill it recursively
+                    result[key] = {}
+                    # Translate it by reference in the new empty dict created
+                    self._generate_translation_rec(result[key], json_data[key], from_language, to_language)
+                # Else we do not distort the value
+                else:
+                    result[key] = json_data[key]
+        # If two instances of list, it means we are in classic JSON List or Nested List
+        elif isinstance(result, list) and isinstance(json_data, list):
+            for element in json_data:
+                # If instance of string, we should translate it
+                if isinstance(element, str):
+                    s = self.transformer.capitalize(element, from_language)
+                    s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
+                    result.append(s)
+                # If instance of list, it means it can be List[str], List[List[Any]], List[Dict[str, Any]] or List[Any]
+                elif isinstance(element, list):
+                    result.append([])
+                    for nested_element in element:
+                        if isinstance(nested_element, str):
+                            s = self.transformer.capitalize(nested_element, from_language)
+                            s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
+                            result[-1].append(s)
+                        elif isinstance(element, list):
+                            # Append new empty list and fill it recursively
+                            result[-1].append([])
+                            # Translate it by reference in the new empty list created
+                            self._generate_translation_rec(result[-1][-1], element, from_language, to_language)
+                        elif isinstance(nested_element, dict):
+                            # Append new empty dict and fill it recursively
+                            result[-1].append({})
+                            # Translate it by reference in the new empty dict created
+                            self._generate_translation_rec(result[-1][-1], nested_element, from_language, to_language)
+                        else:
+                            # If another instance like int, float and so on, do not disturb the value
+                            result[-1].append(nested_element)
+                # If instance of dict, it means it is nested, we make a recursive call by reference
+                elif isinstance(element, dict):
+                    # Add new empty dict to known key and fill it recursively
+                    result.append({})
+                    # Translate it by reference in the new empty dict created
+                    self._generate_translation_rec(result[-1], element, from_language, to_language)
+                # Else we do not distort the value
+                else:
+                    result.append(element)
