@@ -79,8 +79,8 @@ class Language(Enum):
     def to_locale(language: Language) -> str:
         return language.value
 
-# Define groups of languages
 
+# Define groups of languages
 KOREANIC_LANGUAGES = [
     Language.KOREAN
 ]

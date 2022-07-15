@@ -45,9 +45,9 @@ class Translator:
                     if_ignore_limit_of_length=True
                 )
             if from_language in LATIN_LANGUAGES or \
-                to_language in LATIN_LANGUAGES or \
-                from_language in GERMAN_LANGUAGES or \
-                to_language in GERMAN_LANGUAGES:
+                    to_language in LATIN_LANGUAGES or \
+                    from_language in GERMAN_LANGUAGES or \
+                    to_language in GERMAN_LANGUAGES:
                 return translators.bing(
                     query_text=text,
                     from_language=Language.to_locale(from_language),
