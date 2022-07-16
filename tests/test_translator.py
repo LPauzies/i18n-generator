@@ -13,7 +13,7 @@ class TestTranslator(unittest.TestCase):
         s_en = "I am at the beach. Tomorrow I will go to the doctor. Yesterday I was in school."
         s_es = "Estoy en la playa. Mañana iré al médico. Ayer estaba en la escuela."
         s_zh = "我在海滩。 明天，我将去看医生。 昨天我在学校。"
-        s_ru = "Я на пляже. Завтра пойду к врачу. Вчера я был в школе."
+        s_ru = "Я на пляже. Завтра я пойду к врачу. Вчера я учился в школе."
         s_ko = "나는 해변에있다. 내일, 나는 의사에게 갈 것이다. 어제 나는 학교에 있었다."
 
         # Do
@@ -31,7 +31,7 @@ class TestTranslator(unittest.TestCase):
         s_fr = "Je suis à la plage. Demain, j’irai chez le médecin. Hier, j’étais à l’école."
         s_es = "Estoy en la playa. Mañana iré al médico. Ayer estaba en la escuela."
         s_zh = "我在海滩。 明天我将去看医生。 昨天我在学校。"
-        s_ru = "Я на пляже. Завтра пойду к врачу. Вчера я был в школе."
+        s_ru = "Я на пляже. Завтра пойду к врачу. Вчера я учился в школе."
         s_ko = "나는 해변에있다. 내일 나는 의사에게 갈 것이다. 어제 나는 학교에 있었다."
 
         # Do
@@ -67,7 +67,7 @@ class TestTranslator(unittest.TestCase):
         s_fr = "Je suis sur la plage. Demain, j’irai chez le médecin. Hier, j’étais à l’école."
         s_zh = "我在海滩。 明天我要去医生办公室。 昨天我在学校。"
         s_en = "I'm on the beach. Tomorrow I will go to the doctor. Yesterday I was at school."
-        s_ru = "Я на пляже. Завтра пойду к врачу. Вчера я был в школе."
+        s_ru = "Я на пляже. Завтра я пойду в кабинет врача. Вчера я учился в школе."
         s_ko = "나는 해변에있다. 내일 나는 의사의 사무실에 간다. 어제 나는 학교에 있었다."
 
         # Do
@@ -82,10 +82,10 @@ class TestTranslator(unittest.TestCase):
         s_ru = "Я на пляже. Завтра пойду к врачу. Вчера я был в школе."
 
         # Expected
-        s_fr = "Je suis sur la plage. J’irai chez le médecin demain. J’étais à l’école hier."
+        s_fr = "Je suis sur la plage. Je vais aller chez le médecin demain. Hier, j'étais à l'école."
         s_zh = "我在海滩上。 我明天去看医生。 昨天我在学校。"
-        s_en = "I'm on the beach. I'll go to the doctor tomorrow. I was at school yesterday."
-        s_es = "Estoy en la playa. Iré al médico mañana. Ayer estuve en la escuela."
+        s_en = "I'm on the beach. I’ll go to the doctor tomorrow. Yesterday I was at school."
+        s_es = "Estoy en la playa. Iré al médico mañana. Ayer estaba en la escuela."
         s_ko = "나는 해변에있다. 내일 의사에게 갈 게요. 어제 나는 학교에 있었다."
 
         # Do
