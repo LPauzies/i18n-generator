@@ -1,10 +1,11 @@
 import pathlib
 import json
 from tqdm import tqdm
-from typing import Dict, Any, List, Union
+from typing import Dict, Any, Generator, Iterable, List, Union
 from i18ngenerator.languages import Language
 from i18ngenerator.transformer import Transformer
 from i18ngenerator.translator import Translator
+from i18ngenerator.utils.tqdm import infinite_generator
 
 
 class I18nGenerator:
@@ -51,13 +52,14 @@ class I18nGenerator:
 
         Returns:
             Dict[str, Any]: The `json_data` with string values translated to `to_language`
-        """
+        """        
         result = {}
-        progress_bar = tqdm(total=json_data.keys())
-        self._generate_translation_rec(result, json_data, from_language, to_language, progress_bar)
+        with tqdm(infinite_generator()) as progress_bar:
+            progress_bar.set_description_str(f"Currently translating from {Language.to_locale(from_language)} to {Language.to_locale(to_language)}")
+            self._generate_translation_rec(result, json_data, from_language, to_language, progress_bar)
         return result
 
-    def _generate_translation_rec(self, result: Union[List[Any], Dict[str, Any]], json_data: Union[List[Any], Dict[str, Any]], from_language: Language, to_language: Language):
+    def _generate_translation_rec(self, result: Union[List[Any], Dict[str, Any]], json_data: Union[List[Any], Dict[str, Any]], from_language: Language, to_language: Language, progress_bar: tqdm):
         """Recursively translate each string in dictionnary values.
         Keys will not be changed.
         Nested dictionnaries are managed.
@@ -83,6 +85,7 @@ class I18nGenerator:
                     s = self.transformer.capitalize(s, from_language)
                     s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                     result[key] = s
+                    progress_bar.update()
                 # If instance of list, it means it can be List[str], List[List[Any]], List[Dict[str, Any]] or List[Any]
                 elif isinstance(json_data[key], list):
                     result[key] = []
@@ -91,28 +94,31 @@ class I18nGenerator:
                             s = self.transformer.capitalize(element, from_language)
                             s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                             result[key].append(s)
+                            progress_bar.update()
                         elif isinstance(element, list):
                             # Append new empty list and fill it recursively
                             result[key].append([])
                             # Translate it by reference in the new empty list created
-                            self._generate_translation_rec(result[key][-1], element, from_language, to_language)
+                            self._generate_translation_rec(result[key][-1], element, from_language, to_language, progress_bar)
                         elif isinstance(element, dict):
                             # Append new empty dict and fill it recursively
                             result[key].append({})
                             # Translate it by reference in the new empty dict created
-                            self._generate_translation_rec(result[key][-1], element, from_language, to_language)
+                            self._generate_translation_rec(result[key][-1], element, from_language, to_language, progress_bar)
                         else:
                             # If another instance like int, float and so on, do not disturb the value
                             result[key].append(element)
+                            progress_bar.update()
                 # If instance of dict, it means it is nested, we make a recursive call by reference
                 elif isinstance(json_data[key], dict):
                     # Add new empty dict to known key and fill it recursively
                     result[key] = {}
                     # Translate it by reference in the new empty dict created
-                    self._generate_translation_rec(result[key], json_data[key], from_language, to_language)
+                    self._generate_translation_rec(result[key], json_data[key], from_language, to_language, progress_bar)
                 # Else we do not distort the value
                 else:
                     result[key] = json_data[key]
+                    progress_bar.update()
         # If two instances of list, it means we are in classic JSON List or Nested List
         elif isinstance(result, list) and isinstance(json_data, list):
             for element in json_data:
@@ -121,6 +127,7 @@ class I18nGenerator:
                     s = self.transformer.capitalize(element, from_language)
                     s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                     result.append(s)
+                    progress_bar.update()
                 # If instance of list, it means it can be List[str], List[List[Any]], List[Dict[str, Any]] or List[Any]
                 elif isinstance(element, list):
                     result.append([])
@@ -129,25 +136,28 @@ class I18nGenerator:
                             s = self.transformer.capitalize(nested_element, from_language)
                             s = Translator.translate_text(s, from_language=from_language, to_language=to_language)
                             result[-1].append(s)
+                            progress_bar.update()
                         elif isinstance(element, list):
                             # Append new empty list and fill it recursively
                             result[-1].append([])
                             # Translate it by reference in the new empty list created
-                            self._generate_translation_rec(result[-1][-1], element, from_language, to_language)
+                            self._generate_translation_rec(result[-1][-1], element, from_language, to_language, progress_bar)
                         elif isinstance(nested_element, dict):
                             # Append new empty dict and fill it recursively
                             result[-1].append({})
                             # Translate it by reference in the new empty dict created
-                            self._generate_translation_rec(result[-1][-1], nested_element, from_language, to_language)
+                            self._generate_translation_rec(result[-1][-1], nested_element, from_language, to_language, progress_bar)
                         else:
                             # If another instance like int, float and so on, do not disturb the value
                             result[-1].append(nested_element)
+                            progress_bar.update()
                 # If instance of dict, it means it is nested, we make a recursive call by reference
                 elif isinstance(element, dict):
                     # Add new empty dict to known key and fill it recursively
                     result.append({})
                     # Translate it by reference in the new empty dict created
-                    self._generate_translation_rec(result[-1], element, from_language, to_language)
+                    self._generate_translation_rec(result[-1], element, from_language, to_language, progress_bar)
                 # Else we do not distort the value
                 else:
                     result.append(element)
+                    progress_bar.update()
