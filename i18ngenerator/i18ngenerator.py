@@ -59,13 +59,14 @@ class I18nGenerator:
             self._generate_translation_rec(result, json_data, from_language, to_language, progress_bar)
         return result
 
-    def _generate_translation_rec(self, 
-            result: Union[List[Any], Dict[str, Any]], 
-            json_data: Union[List[Any], Dict[str, Any]], 
-            from_language: Language, 
-            to_language: Language, 
-            progress_bar: tqdm
-        ):
+    def _generate_translation_rec(
+        self,
+        result: Union[List[Any], Dict[str, Any]],
+        json_data: Union[List[Any], Dict[str, Any]],
+        from_language: Language,
+        to_language: Language,
+        progress_bar: tqdm
+    ):
         """Recursively translate each string in dictionnary values.
         Keys will not be changed.
         Nested dictionnaries are managed.
