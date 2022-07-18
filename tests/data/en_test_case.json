@@ -1,0 +1,48 @@
+{
+    "k1": "Hello, my name is Alphonse.",
+    "k2": {
+        "k1": "Regards!",
+        "k2": {
+            "k1": "This is Paris!",
+            "k2": [
+                "I carry out tests in suitable places.",
+                "I like to test in inappropriate contexts.",
+                "I am the son of a blacksmith. My father's name was Torag."
+            ]
+        },
+        "k3": [
+            [
+                "I am a snowman.",
+                "I like to fight.",
+                "I like to butter my rusk."
+            ],
+            [
+                "On occasion, I will give you a little polish.",
+                "When a woman changes her man, she changes her hairstyle.",
+                "You are not only a coward, you are a traitor, as your short stature suggested."
+            ]
+        ],
+        "k4": [
+            {
+                "k1": "How is your blanquette?",
+                "k2": [
+                    "It is the impregnable arrogance of your beauty that sprinkles me.",
+                    "We may say, but the France it is still the country of 400 cheeses.",
+                    "It's a little, Jacques said no charcuterie."
+                ],
+                "k3": {
+                    "k1": "I like it when I'm smeared with oil...",
+                    "k2": 123456789.12345679
+                }
+            },
+            [
+                "Okay, let's do it like that, glad to have seen you again friend.",
+                "Not all Germans are Nazis! – Yes, I know this theory.",
+                "Listen to my little one, there I just killed a croco'. So if you want us to work as equals, you should do it."
+            ],
+            "It's useless to me. Unless I have to count to 5. And there on the other hand, it could serve me. I must not exceed 5, because I do not know 6. I am beaten.",
+            "",
+            123456789
+        ]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "k1": "Bonjour, je m'appelle Alphonse.",
+    "k2": {
+        "k1": "Salutations !",
+        "k2": {
+            "k1": "Ici c'est Paris !",
+            "k2": [
+                "Je réalise des tests dans des endroits adéquats.",
+                "J'apprécie tester dans des contextes inadaptés.",
+                "Je suis fils de forgeron. Mon père s'appelait Torag."
+            ]
+        },
+        "k3": [
+            ["Je suis un bonhomme de neige.", "J'aime me battre.", "J'aime me beurrer la biscotte."],
+            ["À l’occasion, je vous mettrai un petit coup de polish.", "Quand une femme change d’homme, elle change de coiffure.", "Tu n’es pas seulement un lâche, tu es un traître, comme ta petite taille le laissait deviner."]
+        ],
+        "k4": [
+            {
+                "k1": "Comment est votre blanquette ?",
+                "k2": ["C’est l’inexpugnable arrogance de votre beauté qui m’asperge.", "On a beau dire, mais la France ça reste quand même le pays des 400 fromages.", "Ça fait un peu, Jacques a dit a dit pas de charcuterie."],
+                "k3": {
+                    "k1": "J'aime quand on m'enduit d'huile...",
+                    "k2": 123456789.123456789
+                }
+            },
+            ["D’accord, faisons comme ça, ravi de t’avoir revu l’ami.", "Tous les allemands ne sont pas Nazis ! – Oui, je connais cette théorie.", "Écoutez mon petit, là je viens de tuer un croco'. Alors si vous voulez qu'on travaille d'égal à égal, faudrait vous y mettre."],
+            "Ça me sert à rien. Sauf si je dois compter jusqu’à 5. Et là en revanche, ça pourrait me servir. Il ne faut pas que je dépasse 5, car je ne connais pas 6. Je suis battu.",
+            "",
+            123456789
+        ]
+    }
+}
