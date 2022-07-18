@@ -15,14 +15,25 @@ class TestMain(unittest.TestCase):
         # Do
         with self.assertRaises(MissingParameterException):
             main(args=command)
-    
-    def test_main_blank_args(self):
+
+    def test_main_with_blank_args(self):
         # Given
-        # Nothing
+        command = []
+
+        # Expected
+        # Raise MissingParameterException
+
+        # Do
+        with self.assertRaises(MissingParameterException):
+            main(args=command)
+    
+    def test_main_version(self):
+        # Given
+        command = ["-v"]
 
         # Expected
         # Raise SystemExit
 
         # Do
         with self.assertRaises(SystemExit):
-            main()
+            main(args=command)
