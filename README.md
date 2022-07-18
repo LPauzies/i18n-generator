@@ -42,6 +42,11 @@ i18n-generator generates the translation from a native language to a list of oth
 python -m i18ngenerator -h
 ```
 
+#### Version
+```Bash
+python -m i18ngenerator -v
+```
+
 #### Using configuration file
 ```Bash
 python -m i18ngenerator --config config.yaml
