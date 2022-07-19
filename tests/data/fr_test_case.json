@@ -7,7 +7,21 @@
             "k2": [
                 "Je réalise des tests dans des endroits adéquats.",
                 "J'apprécie tester dans des contextes inadaptés.",
-                "Je suis fils de forgeron. Mon père s'appelait Torag."
+                "Je réalise des tests dans des endroits adéquats.",
+                [
+                    "Je réalise des tests dans des endroits adéquats.", 
+                    2, 
+                    3,
+                    {
+                        "k1": "Je réalise des tests dans des endroits adéquats.",
+                        "k2": 2
+                    }
+                ],
+                {
+                    "k1": "Je réalise des tests dans des endroits adéquats.",
+                    "k2": 2
+                },
+                123456789.123456789
             ]
         },
         "k3": [
