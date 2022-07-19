@@ -4,7 +4,7 @@ from argparse import RawTextHelpFormatter, ArgumentParser
 from typing import List, Optional
 from i18ngenerator.utils.config_parser import ConfigurationModel, ConfigurationParser
 from i18ngenerator.utils.exceptions import MissingParameterException
-from i18ngenerator.utils.metadata import VERSION
+from i18ngenerator.utils.metadata import AUTHOR, DESCRIPTION, EMAIL, NAME, VERSION
 
 
 def argument_parser() -> ArgumentParser:
@@ -14,8 +14,8 @@ def argument_parser() -> ArgumentParser:
         ArgumentParser: The argument parser for i18ngenerator
     """
     parser = ArgumentParser(
-        prog="i18n generator",
-        description="i18n implementation to help generate automatically translated files based on main language",
+        prog=NAME,
+        description="i18n implementation to help generate automatically translated files based on main language.",
         formatter_class=RawTextHelpFormatter
     )
     parser.add_argument(
@@ -23,7 +23,14 @@ def argument_parser() -> ArgumentParser:
         "--version",
         dest="version",
         action="store_true",
-        help="Version of the package"
+        help="Version of the package."
+    )
+    parser.add_argument(
+        "-i",
+        "--info",
+        dest="info",
+        action="store_true",
+        help="Detailed informations about the package."
     )
     with_config_file = parser.add_argument_group("Using configuration file as YAML only (default behaviour)")
     with_config_file.add_argument(
@@ -74,6 +81,14 @@ def main(args: Optional[List[str]] = None, verbose: bool = True) -> None:
     configuration = None
     if args.version:
         print(VERSION)
+        sys.exit(0)
+    if args.info:
+        print("Package description :")
+        print(f"Name : {NAME}")
+        print(f"Version : {VERSION}")
+        print(f"Author : {AUTHOR}")
+        print(f"Email : {EMAIL}")
+        print(f"Description : {DESCRIPTION}")
         sys.exit(0)
     # Retrieve configuration from config file
     elif args.config_file:

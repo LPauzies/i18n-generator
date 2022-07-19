@@ -27,13 +27,17 @@ class TestMain(unittest.TestCase):
         with self.assertRaises(MissingParameterException):
             main(args=command)
     
-    def test_main_version(self):
+    def test_main_version_information(self):
         # Given
-        command = ["-v"]
+        commands = [
+            ["-i"], ["--info"], 
+            ["-v"], ["--version"]
+        ]
 
         # Expected
         # Raise SystemExit
 
         # Do
-        with self.assertRaises(SystemExit):
-            main(args=command)
+        for command in commands:
+            with self.assertRaises(SystemExit):
+                main(args=command)
