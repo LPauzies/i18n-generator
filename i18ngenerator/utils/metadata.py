@@ -1,1 +1,5 @@
+NAME = "i18n-generator"
 VERSION = "1.2.1"
+AUTHOR = "Lucas Pauzies"
+EMAIL = "lucas.pauzies@hotmail.fr"
+DESCRIPTION = "Python package for i18n implementation and locales generation"

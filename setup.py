@@ -1,12 +1,11 @@
 from setuptools import setup, find_packages
-from i18ngenerator.utils.metadata import VERSION
+from i18ngenerator.utils.metadata import AUTHOR, DESCRIPTION, EMAIL, VERSION, NAME
 
 # The requirements to build the package
 requirements = [
     "translators==5.3.1",
     "nltk>=3.7",
-    "pyyaml==6.0",
-    "tqdm==4.64"
+    "pyyaml==6.0"
 ]
 
 # Read from Readme.md for long description
@@ -15,13 +14,13 @@ with open("./README.md", "r", encoding="utf-8") as f:
 
 # Setup the package
 setup(
-    name = "i18n-generator",
+    name = NAME,
     version = VERSION,
-    author = "Lucas Pauzies",
-    author_email = "lucas.pauzies@hotmail.fr",
-    maintainer = "Lucas Pauzies",
-    maintainer_email = "lucas.pauzies@hotmail.fr",
-    description = "Python package for i18n implementation and locales generation",
+    author = AUTHOR,
+    author_email = EMAIL,
+    maintainer = AUTHOR,
+    maintainer_email = EMAIL,
+    description = DESCRIPTION,
     long_description = readme,
     long_description_content_type = "text/markdown",
     url = "https://github.com/LPauzies/i18n-generator",
