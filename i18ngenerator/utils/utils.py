@@ -1,6 +1,7 @@
 from time import time
 from typing import Callable, Any
 
+
 def timeit(function: Callable) -> Callable:
     """Decorator to time a function
 

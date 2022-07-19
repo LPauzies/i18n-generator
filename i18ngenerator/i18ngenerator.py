@@ -1,6 +1,5 @@
 import pathlib
 import json
-from time import time
 from typing import Dict, Any, List, Union
 from i18ngenerator.languages import Language
 from i18ngenerator.transformer import Transformer
