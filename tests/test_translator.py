@@ -113,6 +113,16 @@ class TestTranslator(unittest.TestCase):
         self.assertEqual(s_es, Translator.translate_text(s_ko, from_language=Language.KOREAN, to_language=Language.SPANISH))
         self.assertEqual(s_ru, Translator.translate_text(s_ko, from_language=Language.KOREAN, to_language=Language.RUSSIAN))
 
+    def test_translate_text_from_el(self):
+        # Given
+        s_el = "Είμαι στην παραλία. Αύριο θα πάω στο γιατρό. Χθες ήμουν στο σχολείο."
+
+        # Expected
+        s_az = "Çimərdəyəm. Sabah həkimə gedəcəm. Dünən məktəbdə idim."
+
+        # Do
+        self.assertEqual(s_az, Translator.translate_text(s_el, from_language=Language.GREEK, to_language=Language.AZERBAIJANI))
+
     def test_translate_text_not_instance_of_language_from(self):
         # Given
         s_fr = "Il semble y avoir Noah et Irene sur la plage. Ils ont traversé la forêt. C'était hier."
